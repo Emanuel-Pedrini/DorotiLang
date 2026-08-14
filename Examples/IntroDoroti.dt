@@ -4,9 +4,12 @@ field Vector2:
 
 ## Commentary
 
-func _Initialize(argc : int32, argv : Array<String>) >> int32:
+@_Initialize(argc : int32, argv : Array<String>) >> int32:
     return 0
 
-func STDPrint(EntryString : String) >> Nothing:
+@STDPrint(EntryString : String) >> Nothing:
     NewString : String = 'This was you entry : ' + EntryString + '\n'
     Print! << NewString
+
+@SayHI() >> NOTHING:
+    Print! << 'Hi, motherfucker!'

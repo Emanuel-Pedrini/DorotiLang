@@ -1,5 +1,6 @@
 #include "ExternalLibraries.h"
 #include "StringUtility.h"
+#include "DorotiLexer.h"
 
 int fBool_IsSourceFile(const char* Path) {
     return (fBool_EndWith(Path, ".dt"));
@@ -49,18 +50,16 @@ char* fPChar_OpenFile(const char* Path) {
 }
 
 int main(int argc, char* argv[]) {
+    char* x;
     for (int i = 0; i < argc; i++) {
         if (fBool_IsSourceFile(argv[i])){
-            char* x = fPChar_OpenFile(argv[i]);
-            printf("%s", x);
-            /*
-                This is just a test.
-                Please, free this bimbo.
-            */
-            free(x);
+            x = fPChar_OpenFile(argv[i]);
         }
     }
     printf("\n");
-    printf("%d", fBool_IsValidIndentifier("vInt_Maximum_Health"));
+    Doroti_LexerState D;
+    D.SourceCode = (x);
+    DorotiLexer(&D);
+    free(x);
 }
 
