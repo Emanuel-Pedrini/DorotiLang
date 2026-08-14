@@ -48,8 +48,7 @@ char* fPChar_OpenFile(const char* Path) {
     return DorotiTotalBuffer;
 }
 
-int main(int argc, char* argv[]){
-    // fPChar_OpenFile(argv[1]);
+int main(int argc, char* argv[]) {
     for (int i = 0; i < argc; i++) {
         if (fBool_IsSourceFile(argv[i])){
             char* x = fPChar_OpenFile(argv[i]);
@@ -61,6 +60,7 @@ int main(int argc, char* argv[]){
             free(x);
         }
     }
-    char* x;
+    printf("\n");
+    printf("%d", fBool_IsValidIndentifier("vInt_Maximum_Health"));
 }
 
