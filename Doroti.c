@@ -50,16 +50,19 @@ char* fPChar_OpenFile(const char* Path) {
 }
 
 int main(int argc, char* argv[]) {
-    char* x;
+    char* x = NULL;
     for (int i = 0; i < argc; i++) {
         if (fBool_IsSourceFile(argv[i])){
             x = fPChar_OpenFile(argv[i]);
         }
     }
     printf("\n");
+    char y[100];
     Doroti_LexerState D;
     D.SourceCode = (x);
-    DorotiLexer(&D);
+    fVoid_DorotiLexer(&D);
     free(x);
+    // fVoid_ReadNumerical("89.457", y, 0);
+    // printf("%s", y);
 }
 

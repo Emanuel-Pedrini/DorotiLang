@@ -1,0 +1,15 @@
+var X : int32 = 13
+var Y : float64 = 9.6 ## Global variables
+stt var Z : string = 'Bye, world!' ## Constant value
+
+@_Initialize(argc : int32, argv : Array[string]) >> int32:
+    var A : int32 = 42
+    var B : float64 = 6.7
+    var C : char = A!
+    var D : string = 'Hello, world!'
+    var E := 54 ## Infer to me, please!
+    ## That isn't dynamic typing!
+    var F := 54
+    F = 45
+    var G := 34 
+    return 0

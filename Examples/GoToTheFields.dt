@@ -1,0 +1,26 @@
+field Creature:
+    public 
+    {
+        Name : string
+        Health : int32
+        Attack : int32
+        Defense : int32
+    }
+    
+    private {
+        Like : Vector[string]
+    }
+    
+    @new(Name : string = 'Bob', 
+        Health : int32 = 100, 
+        Attack : int32 = 20, 
+        Defense : int32 = 20) >> NULL:
+        my.Name = Name
+        my.Health = Health
+        my.Attack = Attack
+        my.Defense = Defense
+
+@_Initialize(argc : int32, argv : Array[string]) >> int32:
+    var Doroti : Creature = Creature::new << 'Doroti', 100, 20, 20
+    var Jammy : Creature = Creature <<
+    return 0

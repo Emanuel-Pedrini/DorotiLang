@@ -1,0 +1,3 @@
+@_Initialize(argc : int32, argv : Array[string]) >> int32:
+    Println! << 'Hello, world!'
+    return 0

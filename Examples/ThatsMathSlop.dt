@@ -1,0 +1,14 @@
+@_Initialize(argc : int32, argv : Array[string]) >> int32:
+    var A : int32 = 39 + 12
+    var B : int32 = ~45 - 19 ## ~ stands for Negative
+    var C := 3 * 89
+    var D : float64 = (56.7 - 9) * 5
+    var E : int32 = 64 / 8
+    var F : int32 = 6 ^ 9
+    var G := 13 % 3
+    var H := 14.7 // 7
+    var I := #36 ## Square root, 6
+    var J := ((G * A) - (#D)) ^ ((C % 34) + 1)
+    _EULER ## Doroti Constant 2,718...
+    _PI ## Doroti Constant 3,14159...
+    return 0

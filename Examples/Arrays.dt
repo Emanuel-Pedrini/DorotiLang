@@ -1,0 +1,18 @@
+@_Initialize(argc : int32, argv : Array[string]) >> int32:
+    var MyList : Array[int32 $10] = {56, 78, 90} # A array with the size of 10;
+    var My2List : Array[string $3] = {'Gugu', 'Dada'}
+
+    ## The arrays starts at 1.
+
+    Append! << My2List, 'Fuck, you.'
+    My2List[3] = 'Bubu'
+
+    ## My2List[4] = 'Die.' ## Hey, you can't do that!! That's a error!
+    ## Append! << My2List, 'Die.' ## Hey, you can't do that!! That's a error!
+    
+    Remove! << My2List, 2
+
+    var My3List : Vector[int32] = {99, 42}
+    Add! << My3List, 45 ## That's OK!
+
+    return 0

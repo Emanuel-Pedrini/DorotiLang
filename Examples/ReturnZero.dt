@@ -1,0 +1,2 @@
+@_Initialize(argc : int32, argv : Array[string]) >> int32:
+    return 0
