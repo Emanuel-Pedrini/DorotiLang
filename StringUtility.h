@@ -13,4 +13,6 @@ D_Bool fBool_IsValidIndentifier(const char* String);
 void fVoid_ReadWord(const char* String, char* Destiny, unsigned int Start);
 void fVoid_ReadString(const char* String, char* Destiny, unsigned int Start);
 void fVoid_ReadNumerical(const char* String, char* Destiny, unsigned int Start);
+D_Uint fVoid_WordEnd(const char* String, unsigned int Start);
+D_Uint fUint_ReadIndentifierEnd(const char* String, unsigned int Start);
 #endif

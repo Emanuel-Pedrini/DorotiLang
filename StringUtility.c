@@ -98,12 +98,31 @@ void fVoid_ReadWord(const char* String, char* Destiny, unsigned int Start) {
     unsigned int y = 0;
     for (int x = Start;
          String[x] != '\0' &&
-         !isspace((unsigned char)String[x]) &&
-         (fBool_IsAlphabetic(String[x]));
+         fBool_IsIndentifierChar(String[x]); 
          x++, y++) {
         Destiny[y] = String[x];
     }
     Destiny[y] = '\0';
+}
+
+D_Uint fUint_ReadIndentifierEnd(const char* String, unsigned int Start) {
+    unsigned int y = 0;
+    for (int x = Start;
+         String[x] != '\0' &&
+         fBool_IsIndentifierChar(String[x]); 
+         x++, y++) {
+    }
+    return Start + y;
+}
+
+D_Uint fVoid_WordEnd(const char* String, unsigned int Start) {
+    unsigned int y = 0;
+    for (int x = Start;
+         String[x] != '\0' &&
+         fBool_IsAlphabetic(String[x]); 
+         x++, y++) {
+    }
+    return Start + y;
 }
 
 void fVoid_ReadNumerical(const char* String, char* Destiny, unsigned int Start) {

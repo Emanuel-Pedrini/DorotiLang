@@ -11,7 +11,7 @@ typedef struct{
 
 void fVoid_NewVector(Doroti_Vector* Vector, D_Uint ElementSize);
 void fVoid_Append(Doroti_Vector* Vector, const void* Element);
-void* fVoid_Get(Doroti_Vector* Vector, long int Index);
+void* fVoid_Get(Doroti_Vector* Vector, D_Uint Index);
 void fVoid_FreeVector(Doroti_Vector* Vector);
 
 #endif

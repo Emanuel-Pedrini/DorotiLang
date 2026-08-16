@@ -8,7 +8,7 @@ void fVoid_NewVector(Doroti_Vector* Vector, D_Uint ElementSize) {
 }
 
 void fVoid_Append(Doroti_Vector* Vector, const void* Element) {
-    if (Vector -> Size > Vector -> Capacity) {
+    if (Vector -> Size >= Vector -> Capacity) {
         
         D_Uint NewCapacity = Vector -> Capacity == 0 ? 8 : (Vector -> Capacity * 2);
         void* NewElements = realloc(Vector -> Elements, NewCapacity * Vector -> ElementSize);
@@ -28,8 +28,8 @@ void fVoid_Append(Doroti_Vector* Vector, const void* Element) {
     Vector -> Size++;
 } 
 
-void* fVoid_Get(Doroti_Vector* Vector, long int Index) {
-    if (Index > Vector -> Size) {
+void* fVoid_Get(Doroti_Vector* Vector, D_Uint Index) {
+    if (Index >= Vector -> Size) {
         return NULL;
     }
     return (char*)Vector -> Elements + Index * Vector -> ElementSize;
