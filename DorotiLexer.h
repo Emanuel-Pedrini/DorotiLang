@@ -1,6 +1,7 @@
 #ifndef _LEXERH_
 #define _LEXERH_
 #include "DorotiTypes.h"
+#include "ArrayUtilities.h"
 
 typedef enum {
     TokenType_Illegal, // 0
@@ -43,49 +44,63 @@ typedef enum {
     TokenType_DoubleLeftArrow, // 30
     TokenType_DoubleRightArrow, // 31
  
-    TokenType_DoubleAmpersand,   
-    TokenType_DoublePipe,       
+    TokenType_DoubleAmpersand, // 32  
+    TokenType_DoublePipe, // 33
 
-    TokenType_DoubleSlash,       
+    TokenType_DoubleSlash, // 34  
  
-    TokenType_Function,
-    TokenType_Let,
-    TokenType_Field,
+    TokenType_Function, // 35
+    TokenType_Let, // 36
+    TokenType_Field, // 37
 
-    TokenType_Infer,
+    TokenType_Infer, // 38
 
-    TokenType_If,
-    TokenType_Else,
-    TokenType_Elif,
-    TokenType_For,
-    TokenType_Until,
-    TokenType_Repeat,
-    TokenType_Then,
-    TokenType_Break,
+    TokenType_If, // 39
+    TokenType_Else, // 40
+    TokenType_Elif, // 41 
+    TokenType_For, // 42
+    TokenType_Until, // 43
+    TokenType_Repeat, // 44
+    TokenType_Then, // 45
+    TokenType_Break, // 46
  
-    TokenType_And,
-    TokenType_Or,
+    TokenType_And, // 47
+    TokenType_Or, // 48
  
-    TokenType_Go,
-    TokenType_Make,
-    TokenType_DoubleColon,
-    TokenType_DoublePoint,
-    TokenType_TriplePoint,
+    TokenType_Go, // 49
+    TokenType_Make, // 50
+    TokenType_DoubleColon, // 51
+    TokenType_DoublePoint, // 52
+    TokenType_TriplePoint, // 53
 
-    TokenType_Expect,
-    TokenType_EqualLiteral,
+    TokenType_Expect, // 54
+    TokenType_EqualLiteral, // 55
 
-    TokenType_UpArrow,
+    TokenType_UpArrow, // 56
 
-    TokenType_LeftPlus,
-    TokenType_LeftSign,
-    TokenType_RightPlus,
-    TokenType_RightSign,
-    TokenType_CommercialE,
-    TokenType_Interrogation,
-    TokenType_Hashtag,
-    TokenType_,
+    TokenType_LeftPlus, // 57
+    TokenType_LeftSign, // 58
+    TokenType_RightPlus, // 59
+    TokenType_RightSign, // 60
+    TokenType_CommercialE, // 61
+    TokenType_Interrogation, // 62
+    TokenType_Hashtag, // 63
+    TokenType_Array, // 64
+    TokenType_NewLine, // 65
+    TokenType_Dedent, // 66
+    TokenType_PlusPlus, // 67
+    TokenType_MinusMinus, // 68
+    TokenType_Variable, // 69
+    TokenType_Return, // 70
+    TokenType_Number, // 71
+    TokenType_Indentifier, // 72
+    TokenType_Point, // 73
 
+    TokenType_Int8,
+    TokenType_Int16,
+    TokenType_Int32,
+    TokenType_Int64,
+    TokenType_Int128,
 } Doroti_TokenType;
 
 typedef struct {
@@ -93,7 +108,8 @@ typedef struct {
     D_Uint Start;
     D_Uint Line;
     D_Uint Column;
-    D_Uint TSize; 
+    D_Uint TSize;
+    
 } Doroti_Token;
 
 typedef struct 
@@ -105,7 +121,8 @@ typedef struct
 
     D_Uint Line;
     D_Uint Column;
-
+    D_Uint IndentStack[64];
+    D_Uint IndentTop;
 } Doroti_LexerState;
 
 Doroti_Token* fToken_NewToken(
@@ -118,7 +135,7 @@ Doroti_Token* fToken_NewToken(
 char GetChar(Doroti_LexerState* DorotiState);
 char PeekChar(Doroti_LexerState* DorotiState);
 
-void fVoid_DorotiLexer(Doroti_LexerState* DorotiState);
+Doroti_Vector* fVecToken_DorotiLexer(Doroti_LexerState* DorotiState);
 static const char* const Doroti_ValidTokens[] = {
     "let",
     ">>",
@@ -133,21 +150,11 @@ static const char* const Doroti_ValidTokens[] = {
     "if",
     "else",
     "elif",
-    "//",
-    "&&",
-    "||",
-    "**",
-    "==",
-    "=>",
-    "<=",
-    "!=",
     "or",
     "and",
     "repeat",
 
     "var",
-    "var!",
-    "var?",
     "dyn",
     "stt",
 
@@ -169,13 +176,9 @@ static const char* const Doroti_ValidTokens[] = {
     "float64",
     "float128",
 
-    "<eof>",
-    "<number>",
-    "<identifier>",
-    "<string>",
-    "..",
-    "...",
-    "::",
+    "string",
+    "array",
+    "**$Bimbo$**"
 };
 
 #endif

@@ -1,10 +1,3 @@
-@_Initialize(argc : int32, argv : Array[string]) >> int32:
+@_HiDoroti(argc : int32, argv : array[string]) >> int32:
     var X : int32 = 0
-    =>
-    =<
-    ==
-    <<
-    >>
-    ::
-    
-    return 0
+    return X

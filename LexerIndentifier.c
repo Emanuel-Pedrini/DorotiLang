@@ -98,10 +98,66 @@ Doroti_Token* fToken_SpecialChar(Doroti_LexerState* DorotiState) {
                 break;
         }
         break;
+    case '.':
+        switch (PeekChar(DorotiState)) {
+            case '.':
+                TokenType = TokenType_DoublePoint;
+                TokenSize = 2;
+                break;
+            default:
+                TokenType = TokenType_Point;
+                TokenSize = 1;
+                break;
+        }
+        break;
     case ',':
         TokenType = TokenType_Comma;
         TokenSize = 1;
         break;
+
+    case '+':
+        switch (PeekChar(DorotiState)) {
+            case '+':
+                TokenType = TokenType_PlusPlus;
+                TokenSize = 2;
+                break;
+            default:
+                TokenType = TokenType_Plus;
+                TokenSize = 1;
+                break;
+        }
+        break;
+
+    case '*':
+        switch (PeekChar(DorotiState)) {
+            case '*':
+                TokenType = TokenType_DoubleAsterisk;
+                TokenSize = 2;
+                break;
+            default:
+                TokenType = TokenType_Asterisk;
+                TokenSize = 1;
+                break;
+        }
+        break;
+        
+    case '&':
+        TokenType = TokenType_CommercialE;
+        TokenSize = 1;
+
+    case '-':
+        switch (PeekChar(DorotiState)) {
+            case '-':
+                TokenType = TokenType_MinusMinus;
+                TokenSize = 2;
+                break;
+            default:
+                TokenType = TokenType_Minus;
+                TokenSize = 1;
+                break;
+        }
+        break;
+
     default:
         TokenType = TokenType_Illegal;
         TokenSize = 1;

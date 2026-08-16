@@ -115,6 +115,16 @@ D_Uint fUint_ReadIndentifierEnd(const char* String, unsigned int Start) {
     return Start + y;
 }
 
+D_Uint fUint_ReadNumberEnd(const char* String, unsigned int Start) {
+    unsigned int y = 0;
+    for (int x = Start;
+         String[x] != '\0' &&
+         (fBool_IsNumerical(String[x]) || String[x] == '.'); 
+         x++, y++) {
+    }
+    return Start + y;
+}
+
 D_Uint fVoid_WordEnd(const char* String, unsigned int Start) {
     unsigned int y = 0;
     for (int x = Start;

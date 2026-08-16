@@ -1,0 +1,8 @@
+@_Initialize(argc : int32, argv : array[string]) >> int32:
+    var GFunc : function = makefunc << "[X^2] + [2X] - [5]"
+    Print! << ToString << GFunc(X = 10) 
+    Print! << ToString << GFunc::Grade ## 2
+    Print! << ToString << GFunc::A
+    Print! << ToString << GFunc::B
+    Print! << ToString << GFunc::C
+    return 0

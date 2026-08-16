@@ -1,6 +1,7 @@
 #include "ExternalLibraries.h"
 #include "StringUtility.h"
 #include "DorotiLexer.h"
+#include "DorotiParser.h"
 
 int fBool_IsSourceFile(const char* Path) {
     return (fBool_EndWith(Path, ".dt"));
@@ -58,11 +59,17 @@ int main(int argc, char* argv[]) {
     }
     printf("\n");
     char y[100];
-    Doroti_LexerState D;
-    D.SourceCode = (x);
-    fVoid_DorotiLexer(&D);
+    Doroti_LexerState Lexer;
+    Lexer.SourceCode = (x);
+    Doroti_Vector* Tokens = fVecToken_DorotiLexer(&Lexer);
+    Doroti_ParserState Parser;
+    Parser.Tokens = Tokens;
+    Parser.Size = Tokens -> Size;
+    Parser.Source = (x);
+    fVoid_DorotiParser(&Parser);
+
+    fVoid_FreeVector(Tokens);
+    free(Tokens);
     free(x);
-    // fVoid_ReadNumerical("89.457", y, 0);
-    // printf("%s", y);
 }
 
